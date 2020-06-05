@@ -2,7 +2,6 @@ apiVersion: "kubeflow.org/v1"
 kind: "TFJob"
 metadata:
   name: "mnist"
-  namespace: kubeflow 
 spec:
   cleanPodPolicy: None 
   tfReplicaSpecs:

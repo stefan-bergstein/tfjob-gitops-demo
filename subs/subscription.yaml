@@ -1,0 +1,15 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: tfjob-gitops-demo-subscription
+  namespace: kubeflow
+  labels:
+    app: tfjob-gitops
+  annotations:
+    apps.open-cluster-management.io/github-path: jobs
+    apps.open-cluster-management.io/github-branch: master
+spec:
+  name: tfjob-gitops-demo-subscription
+  channel: kubeflow/tfjob-gitops-demo-channel
+  placement:
+    local: true
