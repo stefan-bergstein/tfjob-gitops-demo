@@ -1,0 +1,8 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: tfjob-gitops-demo-channel
+  namespace: kubeflow
+spec:
+  type: GitHub
+  pathname: https://github.com/stefan-bergstein/tfjob-gitops-demo.git

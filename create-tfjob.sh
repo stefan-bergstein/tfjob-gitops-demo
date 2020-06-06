@@ -1,15 +1,27 @@
 #!/bin/bash
 
 
-mkdir -p jobs
+mkdir -p jobs/queue-0
+mkdir -p jobs/queue-1
 
-NOW=`date '+%F-%H-%M-%S'`
+for i in {1..10}
+do
+  a=$(($i % 2))
+  NOW=`date '+%F-%H-%M-%S'`
 
-echo "* Create job tf-job-mnist-${NOW}"
-sed "s|name: \"mnist\"|name: mnist-${NOW}|" tf_job_mnist.yaml  > jobs/tf-job-mnist-${NOW}.yaml
+  JOBFILE=jobs/queue-${a}/tf-job-mnist-${NOW}.yaml
 
-echo "* Checkin tf-job-mnist-${NOW}"
-git add jobs/tf-job-mnist-${NOW}.yaml
-git commit -m tf-job-mnist-${NOW}
-git push
+  echo "* Create job ${JOBFILE} in jobs/queue-${a}"
+  sed "s|name: \"mnist\"|name: mnist-${NOW}|" tf_job_mnist.yaml  > ${JOBFILE}
+
+  echo "* Checkin ${JOBFILE}"
+  git add ${JOBFILE}
+  git commit -m ${JOBFILE}
+  git push
+
+  sleep 2 
+done
+
+
+
 

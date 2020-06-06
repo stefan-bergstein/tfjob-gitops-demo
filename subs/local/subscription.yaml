@@ -6,7 +6,7 @@ metadata:
   labels:
     app: tfjob-gitops
   annotations:
-    apps.open-cluster-management.io/github-path: jobs
+    apps.open-cluster-management.io/github-path: jobs/queue-0
     apps.open-cluster-management.io/github-branch: master
 spec:
   name: tfjob-gitops-demo-subscription
